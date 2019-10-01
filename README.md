@@ -15,7 +15,7 @@ code golf ?? é a arte de criar código com o mínimo possível de caracteres ou
 
 CÓDIGO
 codigolf
-otimizado-minimizado ao máximo
+otimizado-minimizado
 bloco svg atualmente com 378B
 378 caracteres que descrevem
 matematicamente
