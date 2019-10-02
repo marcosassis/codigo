@@ -11,8 +11,8 @@ poema : : : logotipo
 CÓDIGO
 de Augusto de Campos (1973)
 
-code golf
-é a arte de codar com o mínimo possível de caracteres ou bytes
+code golf : : :
+codar com o mínimo possível de caracteres ou bytes
 
 CÓDIGO
 codigolf
