@@ -1,0 +1,18 @@
+<svg viewBox="-13 -13 26 26" xmlns="http://www.w3.org/2000/svg">
+<g id="poem_canvas" fill="#fff" display="block">
+<circle cx="0" cy="0" r="13"/>
+<rect x="-13" y="-13" width="26" height="26" display="none"/>
+</g>
+<g id="CODIGO" fill="#000">
+<path id="C" d="M0-12a12 12 0 000 24v-1a11 11 0 010-22"/>
+<path id="O" d="M0-10a10 10 0 000 20 10 10 0 000-20v1a9 9 0 010 18 9 9 0 010-18"/>
+<path id="D" d="M1.125 7.92a8 8 0 000-15.84M2.125-6.67a7 7 0 010 13.34"/>
+<path id="I" d="M.125-8h-.25v16h.25"/>
+<path id="G" d="M-1.125-7.92a8 8 0 000 15.84M-1.125 0h-2.875v1h1.875v5.67a7 7 0 011-13.57"/>
+<path id="o" d="M0-6a6 6 0 000 12 6 6 0 000-12v1a5 5 0 010 10 5 5 0 010-10"/>
+</g>
+<g id="verification" display="none">
+<rect fill="#f00" fill-opacity=".2" x="-1.125" y="-8" width="2.25" height="16"/>
+<circle fill="#f00" fill-opacity=".2" cx="0" cy="0" r="7"/>
+</g>
+</svg>
