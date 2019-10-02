@@ -7,11 +7,12 @@
 transcriação
 
 do icônico (em todos os sentidos)
-poema : : : logotipo
+poema :     logotipo
+
 CÓDIGO
 de Augusto de Campos (1973)
 
-code golf : : :
+code golf     :
 codar com o mínimo possível de caracteres ou bytes
 
 CÓDIGO
