@@ -23,5 +23,4 @@ bloco svg atualmente com 352B
 matematicamente
 a curva do poema
 o código do código
-do código aqui no git
 ```
