@@ -11,8 +11,8 @@
 <path id="G" d="M-1.125-7.92a8 8 0 000 15.84v-7.92H-4v1h1.875v5.67a7 7 0 011-13.57"/>
 <path id="o" d="M0-6A6 6 0 000 6 6 6 0 000-6v1A5 5 0 010 5 5 5 0 010-5"/>
 </g>
-<g id="verification" display="none">
-<rect fill="#f00" fill-opacity=".2" x="-1.125" y="-8" width="2.25" height="16"/>
-<circle fill="#f00" fill-opacity=".2" cx="0" cy="0" r="7"/>
+<g id="verification" display="none" fill="#f00" fill-opacity=".2">
+<rect x="-1.125" y="-8" width="2.25" height="16"/>
+<circle cx="0" cy="0" r="7"/>
 </g>
 </svg>
