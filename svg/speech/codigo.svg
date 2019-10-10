@@ -1,0 +1,32 @@
+<svg viewBox="-13 -13 26 26" xmlns="http://www.w3.org/2000/svg">
+<script>
+function speak (message) {
+  var msg = new SpeechSynthesisUtterance(message)
+  var voices = window.speechSynthesis.getVoices()
+  b=0
+  for(a in voices)
+    if(voices[a].lang.toLowerCase()=="pt-br") {
+      b=a
+      break
+  }
+  msg.voice = voices[b]
+  window.speechSynthesis.speak(msg)
+}
+</script>
+<g id="poem_canvas" fill="#fff" display="block">
+<circle cx="0" cy="0" r="13" onclick="speak('.código')"/>
+<rect x="-13" y="-13" width="26" height="26" display="none"/>
+</g>
+<g id="CODIGO" fill="#000">
+<path id="C" d="M0-12a12 12 0 000 24v-1a11 11 0 010-22" onclick="speak('C')"/>
+<path id="O" d="M0-10a10 10 0 000 20 10 10 0 000-20v1A9 9 0 010 9 9 9 0 010-9" onclick="speak('Ó')"/>
+<path id="D" d="M1.125 7.92a8 8 0 000-15.84m1 1.25a7 7 0 010 13.34" onclick="speak('D')"/>
+<path id="I" d="M.125-8h-.25V8h.25" onclick="speak('I')"/>
+<path id="G" d="M-1.125-7.92a8 8 0 000 15.84V0H-4v1h1.875v5.67a7 7 0 011-13.57" onclick="speak('G')"/>
+<path id="o" d="M0-6A6 6 0 000 6 6 6 0 000-6v1A5 5 0 010 5 5 5 0 010-5" onclick="speak('O')"/>
+</g>
+<g id="verification" display="none" fill="#f00" fill-opacity=".2">
+<rect x="-1.125" y="-8" width="2.25" height="16"/>
+<circle cx="0" cy="0" r="7"/>
+</g>
+</svg>
