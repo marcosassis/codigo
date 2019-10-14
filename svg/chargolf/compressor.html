@@ -3,10 +3,19 @@
 <head>
 <meta charset="utf-8">
 <script>
+
+uniqueCharsArray=str=>[...new Set([...str])]
+arrayToString16=(numbers,ndigits=2)=>{
+  a16=[]
+  for(a of numbers)
+    a16.push(('0'.repeat(ndigits-1)+a.toString(16)).slice(-ndigits))
+  return a16
+}
+
 foo=_=>{
   I=inTA.value
   inlenTA.value=I.length
-  charsTA.value=[...new Set([...I])].join``
+  charsTA.value=uniqueCharsArray(I).join``
   s={};for(a of I)s[a]=-~s[a]
   ss=Object.keys(s).sort((a,b)=>s[b]-s[a])
   charsfTA.value=ss.join``
@@ -21,8 +30,7 @@ bar=_=>{
   charslenTA.value=D.length
   verticalTA.value=I.split``.join`\n`
   asc=[];for(a of I)asc.push(a.charCodeAt())
-  asc16=[];for(a of asc)asc16.push(('0'+(a&0xFF).toString(16)).slice(-2))
-  asciiTA.value=asc16.join`\n`
+  asciiTA.value=arrayToString16(asc).join`\n`
   indexes=[]
   points=[]
   for(twentybits=i=0;(c=I[i])||i%5;++i) {
@@ -34,8 +42,7 @@ bar=_=>{
     }
   }
   indexesTA.value=indexes.join`\n`
-  points16=[];for(a of points)points16.push(('0000'+(a&0xFFFFF).toString(16)).slice(-5))
-  pointsTA.value=points16.join`\n`
+  pointsTA.value=arrayToString16(points,5).join`\n`
   unicodes=[];for(a of points)unicodes.push(String.fromCodePoint(a))
   codedTA.value=unicodes.join``
   unicodeTA.value=unicodes.join`\n`
