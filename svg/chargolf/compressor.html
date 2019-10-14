@@ -1,0 +1,84 @@
+<script>
+uniqueCharsArray=str=>[...new Set([...str])]
+arrayToString16=(numbers,ndigits=2)=>{
+  a16=[]
+  for(a of numbers)
+    a16.push(('0'.repeat(ndigits-1)+a.toString(16)).slice(-ndigits))
+  return a16
+}
+charsFrequency=str=>{
+  s={}
+  for(a of str)s[a]=-~s[a]
+  return s
+}
+decrCompFunc=(a,b)=>s[b]-s[a]
+sortedObj=(obj,compFunc=decrCompFunc)=>Object.keys(obj).sort(compFunc)
+getValuesObj=(obj,order)=>{
+  values=[]
+  for(a of order)values.push(obj[a])
+  return values
+}
+getIndexes=(str,dict)=>[...str].map(c=>dict.indexOf(c))
+compress5to1=(str,dict)=>{
+  points=[]
+  for(twentybits=i=0;(c=str[i])||i%5;++i) {
+    twentybits+=c?dict.indexOf(c)<<i%5*4:0
+    if(i%5==4) {
+      points.push(twentybits)
+      twentybits=0
+    }
+  }
+  return points
+}
+uncompress5to1=(str,dict)=>{
+  R=''
+  for(i=0;i<str.length*5;++i)
+    R+=dict[str[i/5|0].codePointAt()>>i%5*4&15]
+  return R
+}
+compress4to1=(str,dict)=>{
+  points=[]
+  for(twentybits=i=0;(c=str[i])||i%4;++i) {
+    twentybits+=c?dict.indexOf(c)<<i%4*5:0
+    if(i%4==3) {
+      points.push(twentybits)
+      twentybits=0
+    }
+  }
+  return points
+}
+uncompress4to1=(str,dict)=>{
+  R=''
+  for(i=0;i<str.length*4;++i)
+    R+=dict[str[i/4|0].codePointAt()>>i%4*5&31]
+  return R
+}
+</script>
+<textarea placeholder=input id=inTA rows=8 cols=65></textarea>
+<br/>
+<button id=buttonFreq>most frequent</button>
+<button id=buttonAppear>first appearance</button>
+<br/>
+<textarea placeholder=unique id=charsTA rows=1 cols=24></textarea>
+<br/>
+<button id=button5to1>5to1</button>
+<button id=button4to1>4to1</button>
+<br/>
+<textarea placeholder=coded id=outTA rows=4 cols=65></textarea>
+<br/>
+<textarea placeholder=check id=checkTA rows=8 cols=65></textarea>
+<script>
+buttonFreq.onclick=_=>charsTA.value=sortedObj(charsFrequency(inTA.value)).join``
+buttonAppear.onclick=_=>charsTA.value=uniqueCharsArray(inTA.value).join``
+compressTA=(compressFunc,uncompressFunc)=>{
+  I=inTA.value
+  D=charsTA.value
+  outTA.value=String.fromCodePoint(...compressFunc(I,D))
+  //
+  O=[...outTA.value]
+  C=charsTA.value
+  checkTA.value=uncompressFunc(O,C)
+}
+button5to1.onclick=_=>compressTA(compress5to1,uncompress5to1)
+button4to1.onclick=_=>compressTA(compress4to1,uncompress4to1)
+</script>
