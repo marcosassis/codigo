@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<script>
+foo=_=>{
+  I=inTA.value
+  inlenTA.value=I.length
+  charsTA.value=[...new Set([...I])].join``
+  s={};for(a of I)s[a]=-~s[a]
+  ss=Object.keys(s).sort((a,b)=>s[b]-s[a])
+  charsfTA.value=ss.join``
+  freqcTA.rows=freqfA2.rows=ss.length
+  freqcTA.value=ss.join`\n`
+  sf=[];for(a of ss)sf.push(s[a])
+  freqfA2.value=sf.join`\n`
+}
+bar=_=>{
+  I=inTA.value
+  D=charsdictTA.value
+  charslenTA.value=D.length
+  verticalTA.value=I.split``.join`\n`
+  asc=[];for(a of I)asc.push(a.charCodeAt())
+  asc16=[];for(a of asc)asc16.push(('0'+(a&0xFF).toString(16)).slice(-2))
+  asciiTA.value=asc16.join`\n`
+  indexes=[]
+  points=[]
+  for(twentybits=i=0;(c=I[i])||i%5;++i) {
+    indexes.push(aindex=D.indexOf(c))
+    twentybits+=c?aindex<<i%5*4:0
+    if(i%5==4) {
+      points.push(twentybits)
+      twentybits=0
+    }
+  }
+  indexesTA.value=indexes.join`\n`
+  points16=[];for(a of points)points16.push(('0000'+(a&0xFFFFF).toString(16)).slice(-5))
+  pointsTA.value=points16.join`\n`
+  unicodes=[];for(a of points)unicodes.push(String.fromCodePoint(a))
+  codedTA.value=unicodes.join``
+  unicodeTA.value=unicodes.join`\n`
+}
+baz=_=>{
+  U=Array.from(codedTA.value)
+  D=charsdictTA.value
+  R=''
+  for(i=0;i<U.length*5;++i)
+    R+=D[U[i/5|0].codePointAt()>>i%5*4&15]
+  uncodedTA.value=R
+}
+</script>
+</head>
+<body>
+<textarea placeholder="input" id=inTA rows=6 cols=65 oninput=foo() onfocus=foo()>M0-12a12 12 0 000 24l0 -1a11 11 0 010-22M0-10a10 10 0 000 20 10 10 0 000-20M0-9a9 9 0 010 18 9 9 0 010-18M1.125 7.92a8 8 0 000-15.84M2.125-6.67a7 7 0 010 13.34M.125-8l-.25 0l0 16 .25 0M-1.125-7.92a8 8 0 000 15.84M-1.125 0l-2.875 0 0 1 1.875 0 0 5.67a7 7 0 011-13.57M0-6a6 6 0 000 12 6 6 0 000-12M0-5a5 5 0 010 10 5 5 0 010-10</textarea>
+<br/>
+<textarea placeholder="input.length" id=inlenTA style="resize:none;overflow:hidden" rows=1 cols=8></textarea>
+<br/>
+<textarea placeholder="char set (in order of appearance)" id=charsTA rows=1 cols=55></textarea>
+<button onclick="charsdictTA.value=charsTA.value;bar()">use this</button>
+<br/>
+<textarea placeholder="char set (in order of frequency)" id=charsfTA rows=1 cols=55></textarea>
+<button onclick="charsdictTA.value=charsfTA.value;bar()">use this</button>
+<br/>
+<textarea id=freqcTA cols=2></textarea>
+<textarea id=freqfA2 cols=4></textarea>
+<br/>
+<textarea placeholder="char set to use" id=charsdictTA rows=1 cols=55 oninput=bar()></textarea>
+<br/>
+<textarea placeholder="n_chars" id=charslenTA style="resize:none;overflow:hidden" rows=1 cols=8></textarea>
+<br/>
+<textarea id=verticalTA rows=16 cols=4></textarea>
+<textarea id=asciiTA rows=16 cols=4></textarea>
+<textarea id=indexesTA rows=16 cols=4></textarea>
+<textarea id=pointsTA rows=16 cols=8></textarea>
+<textarea id=unicodeTA rows=16 cols=4></textarea>
+<br/>
+<textarea placeholder="unicode coded" id=codedTA rows=4 cols=65 onfocus=baz()></textarea>
+<br/>
+<textarea placeholder="uncoded" id=uncodedTA rows=6 cols=65></textarea>
+
+<!-- <textarea placeholder="input" id=inTA rows=6 cols=65 oninput=foo() onfocus=foo()></textarea> -->
+
+</body>
+</html>
